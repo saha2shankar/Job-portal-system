@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Happy Job | Applicant List</title>
+<style type="text/css">
+
+input, select {
+	min-height: 50px;
+	margin-top: 10px;
+}
+</style>
+</head>
+<body>
+	<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+		data-navbarbg="skin6" data-sidebartype="full"
+		data-sidebar-position="fixed" data-header-position="fixed">
+		<aside class="left-sidebar">
+			<div>
+				<th:block th:insert="Admin/sidebar.html"></th:block>
+			</div>
+		</aside>
+
+		<div class="body-wrapper">
+			<div>
+				<th:block th:insert="Admin/header.html"></th:block>
+			</div>
+			<div class="container-fluid">
+				<div class="card">
+					<div class="card-body">
+					 <h2 class="text-center mb-4">Applicants List</h2>
+					 <div  style="display: flex; justify-content: space-around; flex-wrap: wrap;">
+    <!-- Card 1 -->
+    <div class="col-lg-4 col-md-6 mb-4" th:each="a: ${Applicants}">
+        <div class="card">
+            <div class="card-body text-center">
+                <img src="/Photo/applicant.jpg" alt="applicant" class="img-fluid" style="    height: 100px; width: 100px;  border-radius: 50px;">
+                <h4 class="mt-3">[[${a.fullName}]]</h4>
+                <p class="card-subtitle mt-2 mb-3">Apply at [[${a.companyName}]] for [[${a.position}]]</p>
+                <p class="card-subtitle mt-2 mb-3"><span><time class="timeago" th:datetime="${a.createAt}"></time></span></p>
+               <a th:href="@{applicantDetails(id=${a.id})}"> <button class="btn btn-primary mb-3">View Application</button> </a>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+</div>
+				</div>
+				<div class="py-6 px-6 text-center">
+					<th:block th:insert="Admin/footer.html"></th:block>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

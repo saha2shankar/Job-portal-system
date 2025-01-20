@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Happy Job | Applicant Details</title>
+<style type="text/css">
+
+input, select {
+	min-height: 50px;
+	margin-top: 10px;
+}
+</style>
+</head>
+<body>
+	<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+		data-navbarbg="skin6" data-sidebartype="full"
+		data-sidebar-position="fixed" data-header-position="fixed">
+		<aside class="left-sidebar">
+			<div>
+				<th:block th:insert="Admin/sidebar.html"></th:block>
+			</div>
+		</aside>
+
+		<div class="body-wrapper">
+			<div>
+				<th:block th:insert="Admin/header.html"></th:block>
+			</div>
+			<div class="container-fluid">
+				<div class="card">
+					<div class="card-body">
+						<h2 class="text-center mb-4">Applicant Details</h2>
+						<div>
+							<div class="row">
+								<div class="col-md-6 mb-4">
+									<div class="info-card">
+										<h5>
+											<strong>Full Name:</strong>
+										</h5>
+										<p th:text="${applicant.fullName}"></p>
+									</div>
+								</div>
+								<div class="col-md-6 mb-4">
+									<div class="info-card">
+										<h5>
+											<strong>Email:</strong>
+										</h5>
+										<p th:text="${applicant.email}"></p>
+									</div>
+								</div>
+							</div>
+
+							<!-- Phone and Address -->
+							<div class="row">
+								<div class="col-md-6 mb-4">
+									<div class="info-card">
+										<h5>
+											<strong>Phone:</strong>
+										</h5>
+										<p th:text="${applicant.phone}"></p>
+									</div>
+								</div>
+								<div class="col-md-6 mb-4">
+									<div class="info-card">
+										<h5>
+											<strong>Address:</strong>
+										</h5>
+										<p th:text="${applicant.address}"></p>
+									</div>
+								</div>
+							</div>
+
+							<!-- Position Applied and Company Name -->
+							<div class="row">
+								<div class="col-md-6 mb-4">
+									<div class="info-card">
+										<h5>
+											<strong>Applyed Post:</strong>
+										</h5>
+										<p th:text="${applicant.position}"></p>
+									</div>
+								</div>
+								<div class="col-md-6 mb-4">
+									<div class="info-card">
+										<h5>
+											<strong>Applyed Company:</strong>
+										</h5>
+										<p th:text="${applicant.companyName}"></p>
+									</div>
+								</div>
+							</div>
+
+							<!-- Cover Letter -->
+							<div class="row">
+								<div class="col-md-12 mb-4">
+									<div class="info-card">
+										<h5>
+											<strong>Cover Letter:</strong>
+										</h5>
+										<p th:text="${applicant.coverLetter}"></p>
+									</div>
+								</div>
+							</div>
+
+							<!-- Resume and Portfolio -->
+							<div class="row">
+								<div class="col-md-6 mb-4">
+									<div class="info-card">
+										<h5>
+											<strong>Resume:</strong>
+										</h5>
+										<a
+											th:href="@{/Resumes/{fileName}(fileName=${applicant.resume})}"
+											class="btn btn-primary" target="_blank">View Resume</a>
+
+									</div>
+								</div>
+								<div class="col-md-6 mb-4"
+									th:if="${applicant.portfolio != null and applicant.portfolio != ''}">
+									<div class="info-card">
+										<h5>
+											<strong>Portfolio:</strong>
+										</h5>
+										<p th:text="${applicant.portfolio}"></p>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+
+
+
+					</div>
+				</div>
+				<div class="py-6 px-6 text-center">
+					<th:block th:insert="Admin/footer.html"></th:block>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

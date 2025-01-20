@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<title>Happy Job | Profile edit</title>
+
+  <style type="text/css">
+    input, select {
+      min-height: 50px;
+      margin-top: 10px;
+    }
+
+    .profile-preview {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .profile-preview img {
+      max-width: 150px;
+      max-height: 150px;
+      border-radius: 50px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+
+    <aside class="left-sidebar">
+      <div>
+        <th:block th:insert="Admin/sidebar.html"></th:block>
+      </div>
+    </aside>
+
+    <div class="body-wrapper">
+      <div>
+        <th:block th:insert="Admin/header.html"></th:block>
+      </div>
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            <div class="container my-4">
+              <h2 class="text-center text-primary mb-4">Edit Profile</h2>
+              <form class="row g-3" action="/updateProfile" method="post" enctype="multipart/form-data">
+                <!-- Full Name -->
+                 <div class="profile-preview" id="photoPreview">
+                  <img id="previewImg"  th:src="@{/Photo/{img}(img=${session.validuser.profilePic})}"  alt="Preview">
+                </div>
+                 <!-- Logo -->
+                <div class="col-md-12">
+                  <label for="logiUrl" class="text-primary fw-bold">Profile Picture</label>
+                  <input class="form-control" type="file" id="logiUrl" name="image" accept="image/*" onchange="previewImage(event)">
+                </div>
+                
+                <div class="col-md-6">
+                  <label for="fullname" class="text-primary fw-bold">Full Name</label>
+                  <input class="form-control" type="text" id="fullname" th:value="${session.validuser.fullName}" name="fullName" required>
+                </div>
+                <!-- Email -->
+                <div class="col-md-6">
+                  <label for="email" class="text-primary fw-bold">Email</label>
+                  <input class="form-control" type="email" th:value="${session.validuser.email}" name="email" id="email">
+                </div>
+                <!-- ID -->
+                <div class="col-md-6">
+                  <label for="id" class="text-primary fw-bold">ID (id not editable)</label>
+                  <input class="form-control" type="number" th:value="${session.validuser.id}" name="id" id="id" readonly="readonly" required>
+                </div>
+                <!-- Password -->
+                <div class="col-md-6">
+                  <label for="password" class="text-primary fw-bold">Password (password not edit from here)</label>
+                  <input class="form-control" type="password" id="password" value="********" readonly="readonly">
+                </div>
+               
+
+                <!-- Photo Preview -->
+               
+                <input type="hidden" name="password" th:value="${session.validuser.password}">
+                <!-- Submit Button -->
+                <div class="col-12 text-center">
+                  <input type="submit" value="Edit Profile" class="btn btn-primary w-50 py-2 fs-5">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="py-6 px-6 text-center">
+          <th:block th:insert="Admin/footer.html"></th:block>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript function to preview the uploaded image
+    function previewImage(event) {
+      const previewImg = document.getElementById('previewImg');
+      const file = event.target.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function () {
+          previewImg.src = reader.result;
+          previewImg.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+</body>
+
+</html>

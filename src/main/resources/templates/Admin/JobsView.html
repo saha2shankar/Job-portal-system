@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head
+<title>Happy Job | Job View</title>
+
+<style type="text/css">
+input, select {
+	min-height: 50px;
+	margin-top: 10px;
+}
+</style>
+</head>
+<body>
+	<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+		data-navbarbg="skin6" data-sidebartype="full"
+		data-sidebar-position="fixed" data-header-position="fixed">
+		<aside class="left-sidebar">
+			<div>
+				<th:block th:insert="Admin/sidebar.html"></th:block>
+			</div>
+		</aside>
+
+		<div class="body-wrapper">
+			<div>
+				<th:block th:insert="Admin/header.html"></th:block>
+			</div>
+			<div class="container-fluid">
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">Jobs Details</h5>
+						<div class="table-responsive">
+							<table class="table text-nowrap align-middle mb-0">
+								<thead>
+									<tr class="border-2 border-bottom border-primary border-0">
+										<th scope="col" class="text-center">Vacancy Title</th>
+										<th scope="col" class="text-center">Company Name</th>
+										<th scope="col" class="text-center">Location</th>
+										<th scope="col" class="text-center">Vacancy No</th>
+										<th scope="col" class="text-center">Deadline</th>
+										<th scope="col" class="text-center">Action</th>
+									</tr>
+								</thead>
+								<tbody class="table-group-divider">
+									<tr th:each="j: ${VacancyList}">
+										<td class="text-center fw-medium" th:text="${j.title}">Page
+											Value</td>
+										<td class="text-center fw-medium" th:text="${j.companyName}">
+											<img th:src="@{/Photo/{img}(img=${a.profilePic})}"></td>
+										<td class="text-center fw-medium" th:text="${j.location}">Page
+											Value</td>
+										<td class="text-center fw-medium" th:text="${j.vacancyNo}">Page
+											Value</td>
+										<td class="text-center fw-medium" th:text="${j.lastDate}">Page
+											Value</td>
+										<td class="text-center fw-medium" >
+										<a  th:href="@{/edit/job(id=${j.id})}"><button class=" btn btn-success  btn-sm">Edit</button></a>
+                                            	<a th:href="@{/delete/job(id=${j.id})}"><button class="btn btn-info btn-sm ">Delete</button></a>
+                                            	<a th:href="@{/jobDetails(id=${j.id})}"><button class="  btn btn-primary  btn-sm">view</button></a>
+                                            
+										</td>
+
+
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="py-6 px-6 text-center">
+					<th:block th:insert="Admin/footer.html"></th:block>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

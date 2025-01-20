@@ -1,0 +1,165 @@
+@charset "ISO-8859-1";
+
+/* General Styles */
+body {
+    background: linear-gradient(120deg, #f4f6f9, #e8ebf0);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header */
+header {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 10px 20px;
+}
+
+/* Container */
+.container {
+    margin-top: 40px;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Individual Message */
+.message {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 20px;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100px;
+    cursor: pointer;
+}
+
+.message:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-3px);
+}
+
+.message.read {
+    background-color: #e6ffe6;
+    border-left: 4px solid #28a745;
+}
+
+/* Message Header */
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Message Details */
+.message h5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.message p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.message small {
+    font-size: 0.875rem;
+    color: #999;
+}
+
+/* Mark Read Button */
+.mark-read-btn {
+    border: 2px solid #007bff;
+    color: #007bff;
+    background-color: transparent;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+    align-self: flex-start;
+    cursor: pointer;
+}
+
+.mark-read-btn:hover {
+    background-color: #007bff;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+    .message h5 {
+        font-size: 1rem;
+    }
+
+    .message p, .message small {
+        font-size: 0.875rem;
+    }
+}
+
+/* Animations */
+.message {
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Creative Features */
+.message-details {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.message h5 {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.message:hover h5 {
+    color: #0056b3;
+}
+
+/* Gradient Button Hover */
+.mark-read-btn:hover {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+}
+
+/* Ensure Proper Display on Small Screens */
+@media (max-width: 576px) {
+    .container {
+        padding: 10px;
+    }
+
+    .message {
+        padding: 10px;
+    }
+
+    .mark-read-btn {
+        font-size: 0.75rem;
+    }
+}

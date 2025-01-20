@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<title>Happy Job | Profile Page</title>
+
+<style>
+   .card {
+            background: #e83e8c;
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            max-width: 400px;
+            margin: 50px auto;
+            text-align: center;
+            position: relative;
+            border: none;
+        }
+
+        .card-header {
+            background: #e83e8c;
+            padding: 20px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .profile-pic-container {
+            position: relative;
+            margin-top: -50px;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            animation: zoomIn 0.6s ease-out;
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0.8);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .profile-body {
+            padding: 20px;
+        }
+
+        .profile-info {
+            margin: 15px 0;
+        }
+
+        .profile-info h5 {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .profile-info p {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .edit-button {
+            display: inline-block;
+            margin-top: 20px;
+            background: #e83e8c;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .edit-button:hover {
+            background: #e83e8c;
+            transform: scale(1.05);
+        }
+
+        .card-footer {
+            background: #e83e8c;
+            padding: 10px;
+            border-top: 1px solid #e6e6e6;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Add a subtle glow effect */
+        .profile-pic:hover {
+            box-shadow: 0px 8px 20px rgba(255, 123, 84, 0.5);
+        }
+    </style>
+</head>
+<body>
+	<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+		data-navbarbg="skin6" data-sidebartype="full"
+		data-sidebar-position="fixed" data-header-position="fixed">
+		<aside class="left-sidebar">
+			<div>
+				<th:block th:insert="Admin/sidebar.html"></th:block>
+			</div>
+		</aside>
+
+		<div class="body-wrapper">
+			<div>
+				<th:block th:insert="Admin/header.html"></th:block>
+			</div>
+			<div class="container-fluid">
+				<div class="card">
+        <!-- Header -->
+        <div class="card-header">Profile Details</div>
+
+        <!-- Profile Picture -->
+        <div class="profile-pic-container">
+            <img 
+                th:src="@{/Photo/{img}(img=${session.validuser.profilePic})}" 
+                alt="Profile Picture" 
+                class="profile-pic"
+            />
+        </div>
+
+        <!-- Profile Body -->
+        <div class="profile-body">
+            <!-- Full Name -->
+            <div class="profile-info">
+                <h5>Full Name</h5>
+                <p th:text="${session.validuser.fullName}">John Doe</p>
+            </div>
+
+            <!-- Email -->
+            <div class="profile-info">
+                <h5>Email</h5>
+                <p th:text="${session.validuser.email}">john.doe@example.com</p>
+            </div>
+
+            <!-- ID -->
+            <div class="profile-info">
+                <h5>ID</h5>
+                <p th:text="${session.validuser.id}">12345</p>
+            </div>
+
+            <!-- Password -->
+            <div class="profile-info">
+                <h5>Password</h5>
+                <p>*********</p>
+            </div>
+
+            <!-- Edit Profile Button -->
+           <a th:href="@{/edit/profile(id=${session.validuser.id})}"><button class="edit-button">Edit Profile</button></a> 
+        </div>
+
+        <!-- Footer -->
+        <div class="card-footer">
+            Last updated on: <span th:text="${session.validuser.lastUpdated}">01-01-2025</span>
+        </div>
+    </div>
+    
+				<div class="py-6 px-6 text-center">
+					<th:block th:insert="Admin/footer.html"></th:block>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

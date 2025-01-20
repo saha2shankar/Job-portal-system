@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<title>Happy Job | Edit Job</title>
+
+<style type="text/css">
+input, select{
+	    min-height: 50px;
+    margin-top: 10px;
+}
+
+</style>
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+
+    <aside class="left-sidebar">
+      <div>
+      <th:block th:insert="Admin/sidebar.html"></th:block>
+      </div> 
+    </aside>
+ 
+    <div class="body-wrapper">
+      <div>
+       <th:block th:insert="Admin/header.html"></th:block>
+      </div>
+      <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            <div class="container my-4">
+    <h2 class="text-center text-primary mb-4">Update Job</h2>
+    <form class="row g-3" action="/updatejob" method="post" enctype="multipart/form-data" th:object="${JobModel}">
+        <!-- Job Title and Logo URL -->
+        <div class="col-md-6">
+            <label for="title" class="text-primary fw-bold">Job Title</label>
+            <input class="form-control" type="text" id="title" th:field="*{title}" required>
+        </div>
+                <div class="col-md-6">
+            <label for="vacancyNo" class="text-primary fw-bold">Vacancy Number</label>
+            <input class="form-control" type="text" id="vacancyNo" th:field="*{vacancyNo}">
+        </div>
+
+        <!-- Location and Salary -->
+        <div class="col-md-6">
+            <label for="location" class="text-primary fw-bold">Location</label>
+            <input class="form-control" type="text" id="location" th:field="*{location}" required>
+        </div>
+        <div class="col-md-6">
+            <label for="salary" class="text-primary fw-bold">Salary</label>
+            <input class="form-control" type="text" id="salary" th:field="*{salary}">
+        </div>
+
+        <!-- Job Description and Required Skills -->
+        <div class="col-md-6">
+            <label for="jobDescription" class="text-primary fw-bold">Job Description</label>
+            <textarea class="form-control" id="jobDescription" maxlength="1000" th:field="*{jobDescription}" rows="4" required></textarea>
+        </div>
+        <div class="col-md-6">
+            <label for="requiredSkills" class="text-primary fw-bold">Required Skills</label>
+            <textarea class="form-control" id="requiredSkills" maxlength="1000" th:field="*{requiredSkills}" rows="4"></textarea>
+        </div>
+
+        <!-- Education and Experience -->
+        <div class="col-12">
+            <label for="educationandExperience" class="text-primary fw-bold">Education and Experience</label>
+            <textarea class="form-control" id="educationandExperience" maxlength="1000" th:field="*{educationandExperience}" rows="4"></textarea>
+        </div>
+
+        <!-- Vacancy Number and Job Nature -->
+
+        <div class="col-md-6">
+            <label for="jobNature" class="text-primary fw-bold">Job Nature</label>
+            <select class="form-control" id="jobNature" th:field="*{jobNature}">
+                <option value="Full-time" class="text-primary">Full-time</option>
+                <option value="Part-time" class="text-primary">Part-time</option>
+                <option value="Contract" class="text-primary">Contract</option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="lastDate" class="text-primary fw-bold">Last Date</label>
+            <input class="form-control" type="text" id="lastDate" th:field="*{lastDate}">
+        </div>
+
+<hr>
+        <!-- Company Name and Description -->
+        <div class="col-md-6">
+            <label for="companyName" class="text-primary fw-bold">Company Name</label>
+            <input class="form-control" type="text" id="companyName" th:field="*{companyName}" required>
+        </div>
+         
+        <div class="col-md-6">
+            <label for="companyDescription" class="text-primary fw-bold">Company Description</label>
+            <textarea class="form-control" id="companyDescription" maxlength="1000" th:field="*{companyDescription}" rows="4"></textarea>
+        </div>
+
+        <!-- Company Website and Email -->
+        <div class="col-md-6">
+            <label for="companyWebsite" class="text-primary fw-bold">Company Website</label>
+            <input class="form-control" type="url" id="companyWebsite" th:field="*{companyWebsite}">
+        </div>
+        <div class="col-md-6">
+            <label for="compayeEmail" class="text-primary fw-bold">Company Email</label>
+            <input class="form-control" type="email" id="compayeEmail" th:field="*{compayeEmail}" required>
+        </div>
+
+        <!-- Category -->
+        <div class="col-md-6">
+            <label for="category" class="text-primary fw-bold">Category</label>
+            <input class="form-control" type="text" id="category" th:field="*{category}">
+        </div>
+
+
+<input type="hidden" th:field="*{id}">
+<input type="hidden" th:field="*{logiUrl}">
+<input type="hidden" th:field="*{postedDate}">
+        <!-- Submit Button -->
+        <div class="col-12 text-center">
+            <input type="submit" value="Add Job" class="btn btn-primary w-50 py-2 fs-5">
+        </div>
+    </form>
+</div>
+            
+          </div>
+        </div>
+        <div class="py-6 px-6 text-center">
+        <th:block th:insert="Admin/footer.html"></th:block>
+          </div>
+      </div>
+    </div>
+  </div>
+  </body>
+
+</html>

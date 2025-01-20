@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>Happy Job | Dashboard</title>
+</head>
+
+<body>
+	<!--  Body Wrapper -->
+	<div class="page-wrapper" id="main-wrapper" data-layout="vertical"
+		data-navbarbg="skin6" data-sidebartype="full"
+		data-sidebar-position="fixed" data-header-position="fixed">
+
+		<aside class="left-sidebar">
+			<div>
+				<th:block th:insert="Admin/sidebar.html"></th:block>
+			</div>
+		</aside>
+
+		<div class="body-wrapper">
+			<div>
+				<th:block th:insert="Admin/header.html"></th:block>
+			</div>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title d-flex align-items-center gap-2 mb-4">
+									Traffic Overview</h5>
+								<div style="width: 100%; height: 340px">
+									<canvas id="dashboardChart"></canvas>
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+					<div class="col-lg-4">
+						<div class="card">
+							<div class="card-body text-center">
+								<img
+									src="/adminComponents/src/assets/images/backgrounds/product-tip.png"
+									alt="image" class="img-fluid" width="205">
+								<h4 class="mt-7">Discover Top Talent!</h4>
+								<p class="card-subtitle mt-2 mb-3">Find top candidates and grow your team. Take the next step today!</p>
+							 <a href="/allApplicant"><button class="btn btn-primary mb-3">View Candidates</button></a>	
+							</div>
+						</div>
+					</div>
+
+					<div class="card shadow-sm border-0 rounded-lg mb-4">
+						<div class="card-body">
+							<h5 class="card-title">Dashboard Overview</h5>
+							<div class="row d-flex justify-content-center"
+								style="flex-wrap: nowrap; overflow-x: auto;">
+								<!-- Total Vacancies Card -->
+								<div class="col-md-3 col-sm-6 mb-4">
+									<div class="card shadow-sm border-0 rounded-lg h-100">
+										<div class="card-body text-center">
+											<div class="icon mb-3">
+												<i class="fas fa-briefcase fa-3x text-primary"></i>
+											</div>
+											<h5 class="card-title">Total Vacancies</h5>
+											<h2 class="display-4" th:text="${totalJob.size()}">50</h2>
+										</div>
+									</div>
+								</div>
+
+								<!-- Total Applications Card -->
+								<div class="col-md-3 col-sm-6 mb-4">
+									<div class="card shadow-sm border-0 rounded-lg h-100">
+										<div class="card-body text-center">
+											<div class="icon mb-3">
+												<i class="fas fa-users fa-3x text-success"></i>
+											</div>
+											<h5 class="card-title">Total Applications</h5>
+											<h2 class="display-4" th:text="${totalApplicant.size()}">120</h2>
+										</div>
+									</div>
+								</div>
+
+								<!-- Total Messages Card -->
+								<div class="col-md-3 col-sm-6 mb-4">
+									<div class="card shadow-sm border-0 rounded-lg h-100">
+										<div class="card-body text-center">
+											<div class="icon mb-3">
+												<i class="fas fa-envelope fa-3x text-info"></i>
+											</div>
+											<h5 class="card-title">Total Messages</h5>
+											<h2 class="display-4" th:text="${totalMessage.size()}">15</h2>
+										</div>
+									</div>
+								</div>
+
+								<!-- Total Admins Card -->
+								<div class="col-md-3 col-sm-6 mb-4">
+									<div class="card shadow-sm border-0 rounded-lg h-100">
+										<div class="card-body text-center">
+											<div class="icon mb-3">
+												<i class="fas fa-user-shield fa-3x text-danger"></i>
+											</div>
+											<h5 class="card-title">Total Admins</h5>
+											<h2 class="display-4" th:text="${totalAdmin.size()}">5</h2>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+
+
+
+				</div>
+
+				<div class="py-6 px-6 text-center">
+					<th:block th:insert="Admin/footer.html"></th:block>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" id="totaljob" th:value="${totalJob.size()}">
+    <input type="hidden" id="totalapplicant" th:value="${totalApplicant.size()}">
+	
+	
+	<!-- Font Awesome 5 -->
+	<link
+		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+		rel="stylesheet">
+
+	<script>
+	
+	 const job = document.getElementById("totaljob").value;
+	 const applicant = document.getElementById("totalapplicant").value;
+		const ctx = document.getElementById("dashboardChart").getContext("2d");
+		const dashboardChart = new Chart(ctx, {
+			type : "bar", // You can also use 'pie' or 'doughnut' if preferred
+			data : {
+				labels : [ "Vacancies", "Applications" ], // Only two categories
+				datasets : [
+						{
+							label : "Total Count",
+							data : [ job, applicant ], // Replace with dynamic values if available
+							backgroundColor : [ "rgba(54, 162, 235, 0.6)", // Blue for Vacancies
+							"rgba(255, 99, 132, 0.6)", // Red for Applications
+							],
+							borderColor : [ "rgba(54, 162, 235, 1)",
+									"rgba(255, 99, 132, 1)" ],
+							borderWidth : 1,
+						}, ],
+			},
+			options : {
+				responsive : true,
+				maintainAspectRatio : false, // Allows height to adjust
+				scales : {
+					y : {
+						beginAtZero : true,
+						title : {
+							display : true,
+							text : "Count", // Label for the Y-axis
+						},
+					},
+				},
+				plugins : {
+					legend : {
+						display : true, // Show the legend
+						position : "top",
+					},
+					tooltip : {
+						enabled : true, // Enable tooltips on hover
+					},
+				},
+			},
+		});
+	</script>
+</body>
+
+</html>
