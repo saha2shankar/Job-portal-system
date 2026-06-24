@@ -1,303 +1,386 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-    <head>
+  <head>
     <title>Happy Job | Home Page</title>
-    
-   </head>
+  </head>
 
-   <body>
-   
-   <th:block th:insert="_header.html"></th:block>
+  <body>
+    <th:block th:insert="_header.html"></th:block>
     <main>
-
-        <!-- slider Area Start-->
-        <div class="slider-area ">
-            <!-- Mobile Menu -->
-            <div class="slider-active">
-                <div class="single-slider slider-height d-flex align-items-center" data-background="assets/img/hero/h1_hero.jpg">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-9 col-md-10">
-                                <div class="hero__caption">
-                                    <h1>Find the most exciting startup jobs</h1>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Search Box -->
-                        <div class="row">
-                            <div class="col-xl-8">
-                                <!-- form -->
-                                        <form action="/search" class="search-box search-with" id="jobSearchForm">
-                                    <div class="input-form">
-                                        <input type="text" placeholder="Job Tittle or keyword" name="title">
-                                    </div>
-                                    <div class="select-form">
-                                        <div class="select-itms">
-                                            <select name="location" id="select1">
-                                               <option value="">Any Where</option>
-                                                <option value="janakpur">Janakpur</option>
-                                                <option value="kathmandu">Kathmandu</option>
-                                                <option value="pokhara">Pokhara</option>
-                                                <option value="biratnagar">Biratnagar</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="search-form">
-                                        <a href="#" id="findJobButton">Find Job</a>
-                                    </div>	
-                                </form>		
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- slider Area End-->
-        <!-- Our Services Start -->
-        <div class="our-services section-pad-t30">
+      <!-- slider Area Start-->
+      <div class="slider-area">
+        <!-- Mobile Menu -->
+        <div class="slider-active">
+          <div
+            class="single-slider slider-height d-flex align-items-center"
+            data-background="assets/img/hero/h1_hero.jpg"
+          >
             <div class="container">
-                <!-- Section Tittle -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle text-center">
-                            <span>FEATURED TOURS Packages</span>
-                            <h2>Browse Top Categories </h2>
-                        </div>
-                    </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-9 col-md-10">
+                  <div class="hero__caption">
+                    <h1>Find the most exciting startup jobs</h1>
+                  </div>
                 </div>
-                <div class="row d-flex justify-contnet-center">
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-tour"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="/jobs?category=Design & Creative">Design & Creative</a></h5>
-                                <span>(see more)</span>
-                            </div>
-                        </div>
+              </div>
+              <!-- Search Box -->
+              <div class="row">
+                <div class="col-xl-8">
+                  <!-- form -->
+                  <form
+                    action="/search"
+                    class="search-box search-with"
+                    id="jobSearchForm"
+                  >
+                    <div class="input-form">
+                      <input
+                        type="text"
+                        placeholder="Job Tittle or keyword"
+                        name="title"
+                      />
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-cms"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="/jobs?category=Design & Development">Design & Development</a></h5>
-                                <span>See More</span>
-                            </div>
-                        </div>
+                    <div class="select-form">
+                      <div class="select-itms">
+                        <select name="location" id="select1">
+                          <option value="">Any Where</option>
+                          <option value="janakpur">Janakpur</option>
+                          <option value="kathmandu">Kathmandu</option>
+                          <option value="pokhara">Pokhara</option>
+                          <option value="biratnagar">Biratnagar</option>
+                        </select>
+                      </div>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-report"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="/jobs?category=Sales & Marketing">Sales & Marketing</a></h5>
-                                <span>See More</span>
-                            </div>
-                        </div>
+                    <div class="search-form">
+                      <a href="#" id="findJobButton">Find Job</a>
                     </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-app"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="/jobs?category=Mobile Application">Mobile Application</a></h5>
-                                <span>See More</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-helmet"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="/jobs?category=Construction">Construction</a></h5>
-                                <span>See More</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-high-tech"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="/jobs?category=Information Technology">Information Technology</a></h5>
-                                <span>See More</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-real-estate"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="/jobs?category=Real Estate">Real Estate</a></h5>
-                                <span>See More</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                        <div class="single-services text-center mb-30">
-                            <div class="services-ion">
-                                <span class="flaticon-content"></span>
-                            </div>
-                            <div class="services-cap">
-                               <h5><a href="/jobs?category=Content Writer">Content Writer</a></h5>
-                                <span >See More</span>
-                            </div>
-                        </div>
-                    </div>
+                  </form>
                 </div>
-                <!-- More Btn -->
-                <!-- Section Button -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="browse-btn2 text-center mt-50">
-                            <a href="/allVacancy" class="border-btn2">Browse All Sectors</a>
-                        </div>
-                    </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- slider Area End-->
+      <!-- Our Services Start -->
+      <div class="our-services section-pad-t30">
+        <div class="container">
+          <!-- Section Tittle -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="section-tittle text-center">
+                <span>FEATURED TOURS Packages</span>
+                <h2>Browse Top Categories</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row d-flex justify-contnet-center">
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="single-services text-center mb-30">
+                <div class="services-ion">
+                  <span class="flaticon-tour"></span>
                 </div>
-            </div>
-        </div>
-        <!-- Our Services End -->
-        
-        <!-- Featured_job_start -->
-       
-       
-        <!-- How  Apply Process Start-->
-        <div class="apply-process-area apply-bg pt-150 pb-150" data-background="assets/img/gallery/how-applybg.png">
-            <div class="container">
-                <!-- Section Tittle -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="section-tittle white-text text-center">
-                            <span>Apply process</span>
-                            <h2> How it works</h2>
-                        </div>
-                    </div>
+                <div class="services-cap">
+                  <h5>
+                    <a href="/jobs?category=Design & Creative"
+                      >Design & Creative</a
+                    >
+                  </h5>
+                  <span>(see more)</span>
                 </div>
-                <!-- Apply Process Caption -->
-                <div class="row">
-    <div class="col-lg-4 col-md-6">
-        <div class="single-process text-center mb-30">
-            <div class="process-ion">
-                <span class="flaticon-search"></span>
+              </div>
             </div>
-            <div class="process-cap">
-               <h5>1. Search a job</h5>
-               <p>Explore a wide range of job opportunities that match your skills and career aspirations with our easy-to-use platform.</p>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="single-services text-center mb-30">
+                <div class="services-ion">
+                  <span class="flaticon-cms"></span>
+                </div>
+                <div class="services-cap">
+                  <h5>
+                    <a href="/jobs?category=Design & Development"
+                      >Design & Development</a
+                    >
+                  </h5>
+                  <span>See More</span>
+                </div>
+              </div>
             </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="single-services text-center mb-30">
+                <div class="services-ion">
+                  <span class="flaticon-report"></span>
+                </div>
+                <div class="services-cap">
+                  <h5>
+                    <a href="/jobs?category=Sales & Marketing"
+                      >Sales & Marketing</a
+                    >
+                  </h5>
+                  <span>See More</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="single-services text-center mb-30">
+                <div class="services-ion">
+                  <span class="flaticon-app"></span>
+                </div>
+                <div class="services-cap">
+                  <h5>
+                    <a href="/jobs?category=Mobile Application"
+                      >Mobile Application</a
+                    >
+                  </h5>
+                  <span>See More</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="single-services text-center mb-30">
+                <div class="services-ion">
+                  <span class="flaticon-helmet"></span>
+                </div>
+                <div class="services-cap">
+                  <h5>
+                    <a href="/jobs?category=Construction">Construction</a>
+                  </h5>
+                  <span>See More</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="single-services text-center mb-30">
+                <div class="services-ion">
+                  <span class="flaticon-high-tech"></span>
+                </div>
+                <div class="services-cap">
+                  <h5>
+                    <a href="/jobs?category=Information Technology"
+                      >Information Technology</a
+                    >
+                  </h5>
+                  <span>See More</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="single-services text-center mb-30">
+                <div class="services-ion">
+                  <span class="flaticon-real-estate"></span>
+                </div>
+                <div class="services-cap">
+                  <h5><a href="/jobs?category=Real Estate">Real Estate</a></h5>
+                  <span>See More</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+              <div class="single-services text-center mb-30">
+                <div class="services-ion">
+                  <span class="flaticon-content"></span>
+                </div>
+                <div class="services-cap">
+                  <h5>
+                    <a href="/jobs?category=Content Writer">Content Writer</a>
+                  </h5>
+                  <span>See More</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- More Btn -->
+          <!-- Section Button -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="browse-btn2 text-center mt-50">
+                <a href="/allVacancy" class="border-btn2">Browse All Sectors</a>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-        <div class="single-process text-center mb-30">
-            <div class="process-ion">
-                <span class="flaticon-curriculum-vitae"></span>
-            </div>
-            <div class="process-cap">
-               <h5>2. Apply with Confidence</h5>
-               <p>Submit your application seamlessly by uploading your resume and filling out our simple online application forms.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-4 col-md-6">
-        <div class="single-process text-center mb-30">
-            <div class="process-ion">
-                <span class="flaticon-tour"></span>
-            </div>
-            <div class="process-cap">
-               <h5>3. Get your job</h5>
-               <p>Connect with top employers and take the next step in your career journey with confidence and ease.</p>
-            </div>
-        </div>
-    </div>
-</div>
+      </div>
+      <!-- Our Services End -->
 
-             </div>
-        </div>
-        <!-- How  Apply Process End-->
-        <!-- Testimonial Start -->
-        <div class="testimonial-area testimonial-padding">
-            <div class="container">
-                <!-- Testimonial contents -->
-                <div class="row d-flex justify-content-center">
-                    <div class="col-xl-8 col-lg-8 col-md-10">
-                        <div class="h1-testimonial-active dot-style">
-                            <!-- Single Testimonial -->
-                            <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
-                                <div class="testimonial-caption ">
-                                    <!-- founder -->
-                                    <div class="testimonial-founder  ">
-                                        <div class="founder-img mb-30">
-                                            <img src="assets/img/testmonial/rabina.jpg" alt=""  style="height: 100px; width: 100px; border-radius: 50px">
-                                            <span>Rabina Yadav</span>
-                                            <p>HR Manager</p>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-top-cap">
-                                        <p>"We’ve hired some of our best talents using this job portal. The admin panel is intuitive, and managing job postings and applications has never been this easy. It saves us so much time!"</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial -->
-                            <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
-                                <div class="testimonial-caption ">
-                                    <!-- founder -->
-                                    <div class="testimonial-founder  ">
-                                        <div class="founder-img mb-30">
-                                            <img src="assets/img/testmonial/jasim.jpg" alt="" style="height: 100px; width: 100px; border-radius: 50px">
-                                            <span>Jasim Khan</span>
-                                            <p>Software Engineer</p>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-top-cap">
-                                        <p>"This job portal made my job search effortless. Within days, I found opportunities that matched my skills perfectly and landed my dream role. The user-friendly interface and fast application process are a game changer!"</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Single Testimonial -->
-                            <div class="single-testimonial text-center">
-                                <!-- Testimonial Content -->
-                                <div class="testimonial-caption ">
-                                    <!-- founder -->
-                                    <div class="testimonial-founder  ">
-                                        <div class="founder-img mb-30">
-                                            <img src="assets/img/testmonial/sahana.jpg" alt=""  style="height: 100px; width: 100px; border-radius: 50px">
-                                            <span>Sahana Khatun</span>
-                                            <p>Marketing Specialist</p>
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-top-cap">
-                                        <p>"As a job seeker, I loved how this platform offered tailored job recommendations based on my profile. The seamless application process and frequent updates made it so much easier to stay informed about my applications."</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Testimonial End -->
-         
+      <!-- Featured_job_start -->
 
+      <!-- How  Apply Process Start-->
+      <div
+        class="apply-process-area apply-bg pt-150 pb-150"
+        data-background="assets/img/gallery/how-applybg.png"
+      >
+        <div class="container">
+          <!-- Section Tittle -->
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="section-tittle white-text text-center">
+                <span>Apply process</span>
+                <h2>How it works</h2>
+              </div>
+            </div>
+          </div>
+          <!-- Apply Process Caption -->
+          <div class="row">
+            <div class="col-lg-4 col-md-6">
+              <div class="single-process text-center mb-30">
+                <div class="process-ion">
+                  <span class="flaticon-search"></span>
+                </div>
+                <div class="process-cap">
+                  <h5>1. Search a job</h5>
+                  <p>
+                    Explore a wide range of job opportunities that match your
+                    skills and career aspirations with our easy-to-use platform.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-process text-center mb-30">
+                <div class="process-ion">
+                  <span class="flaticon-curriculum-vitae"></span>
+                </div>
+                <div class="process-cap">
+                  <h5>2. Apply with Confidence</h5>
+                  <p>
+                    Submit your application seamlessly by uploading your resume
+                    and filling out our simple online application forms.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+              <div class="single-process text-center mb-30">
+                <div class="process-ion">
+                  <span class="flaticon-tour"></span>
+                </div>
+                <div class="process-cap">
+                  <h5>3. Get your job</h5>
+                  <p>
+                    Connect with top employers and take the next step in your
+                    career journey with confidence and ease.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- How  Apply Process End-->
+      <!-- Testimonial Start -->
+      <div class="testimonial-area testimonial-padding">
+        <div class="container">
+          <!-- Testimonial contents -->
+          <div class="row d-flex justify-content-center">
+            <div class="col-xl-8 col-lg-8 col-md-10">
+              <div class="h1-testimonial-active dot-style">
+                <!-- Single Testimonial -->
+                <div class="single-testimonial text-center">
+                  <!-- Testimonial Content -->
+                  <div class="testimonial-caption">
+                    <!-- founder -->
+                    <div class="testimonial-founder">
+                      <div class="founder-img mb-30">
+                        <img
+                          src="assets/img/testmonial/rabina.jpg"
+                          alt=""
+                          style="
+                            height: 100px;
+                            width: 100px;
+                            border-radius: 50px;
+                          "
+                        />
+                        <span>Rabina Yadav</span>
+                        <p>HR Manager</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-top-cap">
+                      <p>
+                        "We’ve hired some of our best talents using this job
+                        portal. The admin panel is intuitive, and managing job
+                        postings and applications has never been this easy. It
+                        saves us so much time!"
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Single Testimonial -->
+                <div class="single-testimonial text-center">
+                  <!-- Testimonial Content -->
+                  <div class="testimonial-caption">
+                    <!-- founder -->
+                    <div class="testimonial-founder">
+                      <div class="founder-img mb-30">
+                        <img
+                          src="assets/img/testmonial/jasim.jpg"
+                          alt=""
+                          style="
+                            height: 100px;
+                            width: 100px;
+                            border-radius: 50px;
+                          "
+                        />
+                        <span>Jasim Khan</span>
+                        <p>Software Engineer</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-top-cap">
+                      <p>
+                        "This job portal made my job search effortless. Within
+                        days, I found opportunities that matched my skills
+                        perfectly and landed my dream role. The user-friendly
+                        interface and fast application process are a game
+                        changer!"
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Single Testimonial -->
+                <div class="single-testimonial text-center">
+                  <!-- Testimonial Content -->
+                  <div class="testimonial-caption">
+                    <!-- founder -->
+                    <div class="testimonial-founder">
+                      <div class="founder-img mb-30">
+                        <img
+                          src="assets/img/testmonial/sahana.jpg"
+                          alt=""
+                          style="
+                            height: 100px;
+                            width: 100px;
+                            border-radius: 50px;
+                          "
+                        />
+                        <span>Sahana Khatun</span>
+                        <p>Marketing Specialist</p>
+                      </div>
+                    </div>
+                    <div class="testimonial-top-cap">
+                      <p>
+                        "As a job seeker, I loved how this platform offered
+                        tailored job recommendations based on my profile. The
+                        seamless application process and frequent updates made
+                        it so much easier to stay informed about my
+                        applications."
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Testimonial End -->
     </main>
-    
-       
-      <th:block th:insert="_footer.html"></th:block> 
-    
-     <script type="text/javascript">
-     document.getElementById('findJobButton').addEventListener('click', function (event) {
- 	    event.preventDefault(); // Prevent the default anchor behavior
- 	    document.getElementById('jobSearchForm').submit(); // Submit the form
- 	});</script>
-    </body>
+
+    <th:block th:insert="_footer.html"></th:block>
+
+    <script type="text/javascript">
+      document
+        .getElementById("findJobButton")
+        .addEventListener("click", function (event) {
+          event.preventDefault(); // Prevent the default anchor behavior
+          document.getElementById("jobSearchForm").submit(); // Submit the form
+        });
+    </script>
+  </body>
 </html>

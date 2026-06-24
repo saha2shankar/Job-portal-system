@@ -1,7 +1,6 @@
 package com.punam.Controller;
 
 import java.io.IOException;
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
@@ -26,62 +25,100 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class ApplicantController {
-	
-	@Autowired
-	JobService jobService;
-	
-	@Autowired
-	ApplicantService applicantService;
-	
-	
-	@GetMapping("/apply")
-	public String getApplicationForm(@RequestParam int id, Model model) {		
-	model.addAttribute("job", jobService.findJobById(id));
-		return "ApplyForm";
-	}
-	
-	@PostMapping("/apply")
-	public ResponseEntity<String> apply(@ModelAttribute Applicant applicant, @RequestParam("cv") MultipartFile cv) {
-	    try {
-	        if (!cv.isEmpty()) {
-	            // Save the file
-	            Files.copy(cv.getInputStream(),
-	                    Path.of("src/main/resources/static/Resumes/" + cv.getOriginalFilename()),
-	                    StandardCopyOption.REPLACE_EXISTING);
-	            applicant.setResume(cv.getOriginalFilename());
-	        }
 
-	        // Add additional applicant details
-	        applicant.setCreateAt(LocalDateTime.now());
-	        applicantService.addApplicant(applicant);
+    @Autowired
+    private JobService jobService;
 
-	        // Respond with success message
-	        return ResponseEntity.ok("Application submitted successfully!");
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	        // Respond with error message
-	        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred while submitting your application.");
-	    }
-	}
-	
-	
-	@GetMapping("/allApplicant")
-	public String getAllApplicantList(Model model, HttpSession session) {
-		if(session.getAttribute("validuser")==null) {
-			return"redirect:/login";
-		}
-		model.addAttribute("Applicants", applicantService.getAllApplicant());
-		return"Admin/ApplicantList";
-	}
-	
-	@GetMapping("/applicantDetails")
-	public String ApplicantDetails(@RequestParam int id ,Model model, HttpSession session) {
-		if(session.getAttribute("validuser")==null) {
-			return"redirect:/login";
-		}
-		model.addAttribute("applicant", applicantService.getApplicantById(id));
-		return "Admin/ApplicantDetails";
-	}
+    @Autowired
+    private ApplicantService applicantService;
 
+    @GetMapping("/apply")
+    public String getApplicationForm(@RequestParam int id, Model model) {
+        model.addAttribute("job", jobService.findJobById(id));
+        return "ApplyForm";
+    }
 
+    @PostMapping("/apply")
+    public ResponseEntity<String> apply(
+            @ModelAttribute Applicant applicant,
+            @RequestParam("cv") MultipartFile cv) {
+
+        try {
+
+            if (!cv.isEmpty()) {
+
+                // Upload directory
+                Path uploadDir = Path.of("uploads/resumes");
+
+                // Create directory if it does not exist
+                if (!Files.exists(uploadDir)) {
+                    Files.createDirectories(uploadDir);
+                }
+
+                // File path
+                String fileName = cv.getOriginalFilename();
+                Path filePath = uploadDir.resolve(fileName);
+
+                // Save file
+                Files.copy(
+                        cv.getInputStream(),
+                        filePath,
+                        StandardCopyOption.REPLACE_EXISTING);
+
+                // Save filename in database
+                applicant.setResume(fileName);
+
+                System.out.println("File saved at: "
+                        + filePath.toAbsolutePath());
+            }
+
+            // Save applicant details
+            applicant.setCreateAt(LocalDateTime.now());
+            applicantService.addApplicant(applicant);
+
+            return ResponseEntity.ok(
+                    "Application submitted successfully!");
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            return ResponseEntity
+                    .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error uploading resume: "
+                            + e.getMessage());
+        }
+    }
+
+    @GetMapping("/allApplicant")
+    public String getAllApplicantList(
+            Model model,
+            HttpSession session) {
+
+        if (session.getAttribute("validuser") == null) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute(
+                "Applicants",
+                applicantService.getAllApplicant());
+
+        return "Admin/ApplicantList";
+    }
+
+    @GetMapping("/applicantDetails")
+    public String ApplicantDetails(
+            @RequestParam int id,
+            Model model,
+            HttpSession session) {
+
+        if (session.getAttribute("validuser") == null) {
+            return "redirect:/login";
+        }
+
+        model.addAttribute(
+                "applicant",
+                applicantService.getApplicantById(id));
+
+        return "Admin/ApplicantDetails";
+    }
 }

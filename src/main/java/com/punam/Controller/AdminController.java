@@ -104,30 +104,65 @@ public class AdminController {
 		return "Admin/ProfileEdit";
 	}
 	
-	@PostMapping("/updateProfile")
-	public String updateProfile(@ModelAttribute Admin admin ,  @RequestParam(required = false) MultipartFile image, HttpSession session) {
-		if(session.getAttribute("validuser")==null) {
-			return"redirect:/login";
-		}
-		if(!image.isEmpty()) {
-			try {
-				Files.copy(image.getInputStream(), 
-						Path.of("src/main/resources/static/Photo/"+ image.getOriginalFilename()), 
-						StandardCopyOption.REPLACE_EXISTING);
-				admin.setProfilePic(image.getOriginalFilename());
-			
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
-			
-		}else {
-			admin.setProfilePic("placeholder.jpg");
-		}
-		admin.setLastUpdated(LocalDateTime.now());
-		adminService.updateAdmin(admin);
-		return "redirect:/logout";
-	}
+@PostMapping("/updateProfile")
+public String updateProfile(
+        @ModelAttribute Admin admin,
+        @RequestParam(required = false) MultipartFile image,
+        HttpSession session) {
+
+    if (session.getAttribute("validuser") == null) {
+        return "redirect:/login";
+    }
+
+    try {
+
+        if (image != null && !image.isEmpty()) {
+
+            // Upload directory
+            Path uploadDir = Path.of("uploads/photos");
+
+            // Create directory if it doesn't exist
+            Files.createDirectories(uploadDir);
+
+            // File name
+            String fileName = image.getOriginalFilename();
+
+            // File path
+            Path filePath = uploadDir.resolve(fileName);
+
+            // Save image
+            Files.copy(
+                    image.getInputStream(),
+                    filePath,
+                    StandardCopyOption.REPLACE_EXISTING);
+
+            // Save image name in database
+            admin.setProfilePic(fileName);
+
+            System.out.println("Profile image uploaded to: "
+                    + filePath.toAbsolutePath());
+
+        } else {
+
+            // Keep existing image if no new image uploaded
+            Admin oldAdmin = adminService.getAdminbyId(admin.getId());
+
+            if (oldAdmin != null) {
+                admin.setProfilePic(oldAdmin.getProfilePic());
+            } else {
+                admin.setProfilePic("placeholder.jpg");
+            }
+        }
+
+        admin.setLastUpdated(LocalDateTime.now());
+        adminService.updateAdmin(admin);
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    return "redirect:/logout";
+}
 	
 	@GetMapping("/change-password")
 	public String changePassword(HttpSession session) {

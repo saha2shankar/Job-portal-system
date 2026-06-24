@@ -37,29 +37,54 @@ public class JobsController {
 		return "Admin/AddJob";
 	}
 	
-	@PostMapping("/addJobs")
-	public String postJob(@ModelAttribute Job job, Model model, @RequestParam(required = false) MultipartFile image, HttpSession session) {
-		if(session.getAttribute("validuser")==null) {
-			return"redirect:/login";
-		}
-		if(!image.isEmpty()) {
-			try {
-				Files.copy(image.getInputStream(), 
-						Path.of("src/main/resources/static/Photo/"+ image.getOriginalFilename()), 
-						StandardCopyOption.REPLACE_EXISTING);
-				job.setLogiUrl(image.getOriginalFilename());
-			
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-			}
-			
-		}
-		
-		job.setPostedDate(LocalDateTime.now());
-		jobService.addJob(job);
-		return "redirect:/addJobs";
-	}
+@PostMapping("/addJobs")
+public String postJob(
+        @ModelAttribute Job job,
+        Model model,
+        @RequestParam(required = false) MultipartFile image,
+        HttpSession session) {
+
+    if (session.getAttribute("validuser") == null) {
+        return "redirect:/login";
+    }
+
+    try {
+
+        if (image != null && !image.isEmpty()) {
+
+            // Upload directory
+            Path uploadDir = Path.of("uploads/photos");
+
+            // Create directory if it doesn't exist
+            Files.createDirectories(uploadDir);
+
+            // Generate file path
+            String fileName = image.getOriginalFilename();
+            Path filePath = uploadDir.resolve(fileName);
+
+            // Save file
+            Files.copy(
+                    image.getInputStream(),
+                    filePath,
+                    StandardCopyOption.REPLACE_EXISTING);
+
+            // Save filename in database
+            job.setLogiUrl(fileName);
+
+            System.out.println(
+                    "Image uploaded to: "
+                            + filePath.toAbsolutePath());
+        }
+
+        job.setPostedDate(LocalDateTime.now());
+        jobService.addJob(job);
+
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    return "redirect:/addJobs";
+}
 	
 	@GetMapping("/jobDetails")
 	public String JobDetails(@RequestParam int id, Model model) {

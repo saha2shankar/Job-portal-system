@@ -48,7 +48,7 @@
               <form class="row g-3" action="/updateProfile" method="post" enctype="multipart/form-data">
                 <!-- Full Name -->
                  <div class="profile-preview" id="photoPreview">
-                  <img id="previewImg"  th:src="@{/Photo/{img}(img=${session.validuser.profilePic})}"  alt="Preview">
+                  <img id="previewImg"  th:src="@{/uploads/Photo/{img}(img=${session.validuser.profilePic})}"  alt="Preview">
                 </div>
                  <!-- Logo -->
                 <div class="col-md-12">
